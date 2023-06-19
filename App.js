@@ -1,5 +1,5 @@
 import React from 'react';
-import { View, StyleSheet, SafeAreaView } from "react-native";
+import {View, StyleSheet, SafeAreaView} from "react-native";
 import CurrentWeather from "./src/components/CurrentWeather";
 import UpcomingWeather from "./src/components/UpcomingWeather";
 
