@@ -1,27 +1,29 @@
-import React, {useState} from 'react'
+import React from 'react'
 import { NavigationContainer } from '@react-navigation/native'
 import Tabs from "./src/components/Tabs"
-import {ActivityIndicator, View, StyleSheet} from "react-native";
+import { ActivityIndicator, View, StyleSheet } from 'react-native'
+import { useGetWeather } from './src/Hooks/useGetWeather'
 
 const App = () => {
-    const [loading, setLoading] = useState(true)
-    if (loading) {
-        return (
-            <View style={styles.container}>
-                <ActivityIndicator size={'large'} color={'blue'}/>
-            </View>
-        )
-    }
+  const [loading, error, weather] = useGetWeather()
+
+  if (weather && weather.list) {
+    return (
+      <NavigationContainer>
+        <Tabs weather={weather} />
+      </NavigationContainer>
+    )
+  }
   return (
-    <NavigationContainer>
-      <Tabs />
-    </NavigationContainer>
+    <View style={styles.container}>
+      <ActivityIndicator size={"large"} color={"blue"} />
+    </View>
   )
 }
 const styles = StyleSheet.create({
-    container: {
-        justifyContent: 'center',
-        flex: 1
-    }
+  container: {
+    justifyContent: 'center',
+    flex: 1
+  }
 })
 export default App
