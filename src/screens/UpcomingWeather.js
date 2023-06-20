@@ -1,87 +1,94 @@
-import React from "react";
-import {Text, SafeAreaView, StyleSheet, FlatList, View, StatusBar, Image, ImageBackground} from "react-native";
-import {Feather} from "@expo/vector-icons";
-import ListItem from "../components/ListItem";
+import React from "react"
+import {
+  Text,
+  SafeAreaView,
+  StyleSheet,
+  FlatList,
+  View,
+  StatusBar,
+  Image,
+  ImageBackground
+} from 'react-native'
+import { Feather } from '@expo/vector-icons'
+import ListItem from "../components/ListItem"
 
 const DATA = [
-    {
-        dt_text: '2023-02-18 12:00:00',
-        main: {
-            temp_max: 8.55,
-            temp_min: 7.55
-        },
-        weather: [
-            {
-                main: 'Clear'
-            }
-        ]
+  {
+    dt_text: '2023-02-18 12:00:00',
+    main: {
+      temp_max: 8.55,
+      temp_min: 7.55
     },
-    {
-        dt_text: '2023-02-18 15:00:00',
-        main: {
-            temp_max: 8.55,
-            temp_min: 7.55
-        },
-        weather: [
-            {
-                main: 'Clouds'
-            }
-        ]
+    weather: [
+      {
+        main: 'Clear'
+      }
+    ]
+  },
+  {
+    dt_text: '2023-02-18 15:00:00',
+    main: {
+      temp_max: 8.55,
+      temp_min: 7.55
     },
-    {
-        dt_text: '2023-02-18 18:00:00',
-        main: {
-            temp_max: 8.55,
-            temp_min: 7.55
-        },
-        weather: [
-            {
-                main: 'Rain'
-            }
-        ]
+    weather: [
+      {
+        main: 'Clouds'
+      }
+    ]
+  },
+  {
+    dt_text: '2023-02-18 18:00:00',
+    main: {
+      temp_max: 8.55,
+      temp_min: 7.55
     },
-
+    weather: [
+      {
+        main: 'Rain'
+      }
+    ]
+  }
 ]
 
-
 const UpcomingWeather = () => {
-    const {container, image} = styles
-    const renderItem = ({item}) => {
-        return (
-            <ListItem
-                condition={item.weather[0].main}
-                dt_text={item.dt_text}
-                min={item.main.temp_min}
-                max={item.main.temp_max}
-            />
-            )
-    }
+  const { container, image } = styles
+  const renderItem = ({ item }) => {
     return (
-        <SafeAreaView style={container}>
-            <ImageBackground
-                source={require('../../assets/upcoming-back.jpg')}
-                style={image}
-            >
-                <Text>Upcoming Weather</Text>
-                <FlatList
-                    data={DATA}
-                    renderItem={renderItem}
-                    keyExtractor={(item) => item.dt_text}
-                />
-             </ImageBackground>
-        </SafeAreaView>
-    );
-};
+      <ListItem
+        condition={item.weather[0].main}
+        dt_text={item.dt_text}
+        min={item.main.temp_min}
+        max={item.main.temp_max}
+      />
+    )
+  }
+  return (
+    <SafeAreaView style={container}>
+      <ImageBackground
+        source={require('../../assets/upcoming-back.jpg')}
+        style={image}
+      >
+        <Text>Upcoming Weather</Text>
+        <FlatList
+          data={DATA}
+          renderItem={renderItem}
+          keyExtractor={(item) => item.dt_text}
+        />
+      </ImageBackground>
+    </SafeAreaView>
+  )
+}
 
 const styles = StyleSheet.create({
-    container: {
-        flex: 1,
-        marginTop: StatusBar.currentHeight || 0,
-        backgroundColor: 'royalblue'
-    },
-    image: {
-        flex: 1
-    }
+  container: {
+    flex: 1,
+    marginTop: StatusBar.currentHeight || 0,
+    backgroundColor: 'royalblue'
+  },
+  image: {
+    flex: 1
+  }
 })
 
-export default UpcomingWeather;
+export default UpcomingWeather
