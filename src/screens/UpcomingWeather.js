@@ -11,10 +11,12 @@ import ListItem from "../components/ListItem"
 const UpcomingWeather = ({ weatherData }) => {
   const { container, image } = styles
   const renderItem = ({ item }) => {
+    console.log(weatherData)
+
     return (
       <ListItem
         condition={item.weather[0].main}
-        dt_text={item.dt_text}
+        dt_txt={item.dt_txt}
         min={item.main.temp_min}
         max={item.main.temp_max}
       />
